@@ -1,0 +1,214 @@
+@import '../About/About.css';
+
+.membership-plans {
+    padding: 120px 0;
+    background: var(--bg-dark);
+}
+
+.membership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.membership-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.membership-card:hover {
+    transform: translateY(-6px);
+}
+
+.membership-card--popular {
+    border-color: var(--primary);
+    border-width: 2px;
+    box-shadow: 0 0 60px rgba(230, 57, 70, 0.2);
+    transform: scale(1.03);
+}
+
+.membership-card--popular:hover {
+    transform: scale(1.03) translateY(-6px);
+}
+
+.membership-card__badge {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.membership-card__header {
+    padding: 32px 28px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.membership-card__name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.membership-card__price {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.membership-card__currency {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 8px;
+}
+
+.membership-card__amount {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -2px;
+}
+
+.membership-card__period {
+    font-size: 14px;
+    color: var(--text-muted);
+    align-self: flex-end;
+    margin-bottom: 4px;
+}
+
+.membership-card__billing {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.membership-card__features {
+    list-style: none;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.membership-card__features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.membership-card__feature--excluded span {
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.membership-card__check {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.membership-card__check--yes {
+    color: var(--primary);
+}
+
+.membership-card__check--no {
+    color: var(--border-light);
+}
+
+.membership-card .btn-primary,
+.membership-card .btn-red-outline {
+    margin: 0 28px 28px;
+    width: calc(100% - 56px);
+    justify-content: center;
+}
+
+/* FAQ */
+.membership-faq {
+    padding: 100px 0;
+    background: var(--bg-section);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.faq-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: border-color 0.3s ease;
+}
+
+.faq-card:hover {
+    border-color: rgba(230, 57, 70, 0.3);
+}
+
+.faq-card__q {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.faq-card__q::before {
+    content: 'Q';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--primary);
+    font-size: 12px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.faq-card__a {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding-left: 34px;
+}
+
+@media (max-width: 900px) {
+    .membership-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .membership-card--popular {
+        transform: scale(1);
+    }
+
+    .membership-card--popular:hover {
+        transform: translateY(-6px);
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
