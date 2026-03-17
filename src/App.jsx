@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
@@ -13,36 +15,50 @@ import './App.css'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo(0, 0)
+    AOS.refresh()
   }, [pathname])
+
   return null
 }
 
 function App() {
   useEffect(() => {
-    if (window.AOS) {
-      window.AOS.init({ duration: 800, once: true });
-    }
-  }, []);
+    AOS.init({
+      duration: 800,
+      once: true,
+    })
+  }, [])
 
   return (
     <Router>
       <ScrollToTop />
       <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/trainers" element={<Trainers />} />
-          <Route path="/programs" element={<Programs />} />
-          <Route path="/membership" element={<Membership />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
+
+      <MainRoutes />
+
       <Footer />
     </Router>
+  )
+}
+
+function MainRoutes() {
+  const location = useLocation()
+
+  return (
+    <main>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/trainers" element={<Trainers />} />
+        <Route path="/programs" element={<Programs />} />
+        <Route path="/membership" element={<Membership />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </main>
   )
 }
 
