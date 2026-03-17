@@ -21,11 +21,12 @@
     border-bottom: none;
 }
 
+/* Desktop: reverse layout uses RTL trick — safe only when container has overflow:hidden */
 .program-detail--reverse {
     direction: rtl;
 }
 
-.program-detail--reverse>* {
+.program-detail--reverse > * {
     direction: ltr;
 }
 
@@ -101,7 +102,7 @@
 }
 
 .program-detail__title {
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 900;
     text-transform: uppercase;
     color: #fff;
@@ -136,19 +137,50 @@
     flex-shrink: 0;
 }
 
-@media (max-width: 900px) {
+/* ── RESPONSIVE ── */
 
-    .program-detail,
-    .program-detail--reverse {
+@media (max-width: 900px) {
+    .programs-list {
+        padding: 60px 0;
+    }
+
+    .program-detail {
         grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 60px;
+        padding-bottom: 60px;
+        /* Kill the RTL trick entirely on mobile — it causes overflow */
+        direction: ltr;
+    }
+
+    /* Also reset the reverse variant */
+    .program-detail--reverse {
+        direction: ltr;
+    }
+
+    .program-detail--reverse > * {
         direction: ltr;
     }
 
     .program-detail__img {
-        height: 300px;
+        height: 260px;
+    }
+
+    .program-detail__features {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .program-detail__img {
+        height: 220px;
     }
 
     .program-detail__features {
         grid-template-columns: 1fr;
+    }
+
+    .program-detail__meta {
+        gap: 16px;
     }
 }

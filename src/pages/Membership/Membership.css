@@ -67,6 +67,7 @@
     gap: 4px;
     line-height: 1;
     margin-bottom: 8px;
+    flex-wrap: wrap;
 }
 
 .membership-card__currency {
@@ -75,11 +76,12 @@
     font-weight: 700;
     color: var(--primary);
     margin-top: 8px;
+    flex-shrink: 0;
 }
 
 .membership-card__amount {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
     font-weight: 900;
     color: #fff;
     letter-spacing: -2px;
@@ -195,9 +197,36 @@
     padding-left: 34px;
 }
 
+/* ── RESPONSIVE ── */
+
+@media (max-width: 1000px) {
+    .membership-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Premium card takes full width as 3rd item */
+    .membership-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
 @media (max-width: 900px) {
+    .membership-plans {
+        padding: 80px 0;
+    }
+
+    .membership-faq {
+        padding: 60px 0;
+    }
+
     .membership-grid {
         grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+        gap: 20px;
     }
 
     .membership-card--popular {
@@ -205,10 +234,43 @@
     }
 
     .membership-card--popular:hover {
-        transform: translateY(-6px);
+        transform: translateY(-4px);
+    }
+
+    .membership-card:last-child {
+        grid-column: auto;
+        max-width: 100%;
     }
 
     .faq-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .membership-card__header {
+        padding: 24px 20px 20px;
+    }
+
+    .membership-card__features {
+        padding: 20px;
+    }
+
+    .membership-card__amount {
+        font-size: 2.2rem;
+    }
+
+    .membership-card__currency {
+        font-size: 1.1rem;
+    }
+
+    .membership-card .btn-primary,
+    .membership-card .btn-red-outline {
+        margin: 0 20px 24px;
+        width: calc(100% - 40px);
+    }
+
+    .faq-card {
+        padding: 20px;
     }
 }

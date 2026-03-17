@@ -31,12 +31,14 @@
 .trainer-full-card__img-wrap {
     position: relative;
     overflow: hidden;
+    min-height: 280px;
 }
 
 .trainer-full-card__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 30%;
     transition: transform 0.5s ease;
 }
 
@@ -90,6 +92,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 12px;
 }
 
 .trainer-full-card__name {
@@ -108,6 +111,7 @@
 
 .trainer-full-card__rating {
     text-align: right;
+    flex-shrink: 0;
 }
 
 .trainer-full-card__stars {
@@ -167,18 +171,59 @@
     letter-spacing: 0.5px;
 }
 
+/* ── RESPONSIVE ── */
+
+/* Collapse to single column early since the side-by-side card is cramped */
 @media (max-width: 1000px) {
+    .trainers-section {
+        padding: 80px 0;
+    }
+
     .trainers-full-grid {
         grid-template-columns: 1fr;
     }
 }
 
+/* On tablet, keep the horizontal card layout but widen the image */
+@media (max-width: 768px) {
+    .trainer-full-card {
+        grid-template-columns: 160px 1fr;
+    }
+
+    .trainer-full-card__img-wrap {
+        min-height: 240px;
+    }
+
+    .trainer-full-card__body {
+        padding: 20px;
+    }
+}
+
+/* Mobile: stack image on top, content below */
 @media (max-width: 600px) {
     .trainer-full-card {
         grid-template-columns: 1fr;
     }
 
     .trainer-full-card__img-wrap {
-        height: 280px;
+        height: 260px;
+        min-height: unset;
+    }
+
+    .trainer-full-card__header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .trainer-full-card__rating {
+        text-align: left;
+    }
+
+    .trainer-full-card__stars {
+        justify-content: flex-start;
+    }
+
+    .trainer-full-card__body {
+        padding: 20px 16px;
     }
 }

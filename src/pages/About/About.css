@@ -19,13 +19,14 @@
 }
 
 .page-hero__title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2rem, 5vw, 4.5rem);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -1px;
     color: #fff;
     margin: 12px 0 16px;
     animation: fadeInUp 0.7s ease both;
+    word-break: break-word;
 }
 
 .page-hero__title span {
@@ -156,7 +157,7 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* TIMELINE */
+/* ===== TIMELINE ===== */
 .about-timeline {
     padding: 120px 0;
     background: var(--bg-dark);
@@ -291,12 +292,23 @@
     flex-shrink: 0;
 }
 
-/* RESPONSIVE */
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
 @media (max-width: 900px) {
+    .about-mission {
+        padding: 80px 0;
+    }
 
     .about-mission__grid,
     .about-facilities__grid {
         grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-mission__img,
+    .about-facilities__img img {
+        height: 320px;
     }
 
     .about-stats__grid {
@@ -307,35 +319,68 @@
         border-right: none;
     }
 
-    .timeline__item--left {
-        padding-right: 60px;
-        text-align: left;
-    }
-
-    .timeline__item--right {
-        padding-left: 60px;
-    }
-
+    /* ── TIMELINE MOBILE FIX ── */
+    /* Move the vertical line to the left side */
     .timeline__line {
-        left: 20px;
+        left: 12px;
+        transform: none;
     }
 
+    /* All items: clear the alternating left/right layout */
+    .timeline__item,
+    .timeline__item--left,
+    .timeline__item--right {
+        justify-content: flex-start;
+        padding-left: 44px;
+        padding-right: 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    /* Dot sits on the left line */
     .timeline__dot {
-        left: 20px;
+        left: 4px;
+        transform: none;
+    }
+
+    .timeline__card {
+        width: 100%;
+        max-width: 100%;
     }
 }
 
 @media (max-width: 600px) {
+    .page-hero {
+        padding: 120px 0 60px;
+    }
+
+    .about-timeline {
+        padding: 60px 0;
+    }
+
+    .about-stats {
+        padding: 40px 0;
+    }
+
     .about-stats__grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .about-stat-card {
         border-right: 1px solid rgba(255, 255, 255, 0.1);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 24px 12px;
+    }
+
+    .about-stat-card__value {
+        font-size: 2rem;
     }
 
     .about-facilities__list {
         grid-template-columns: 1fr;
+    }
+
+    .timeline__card {
+        padding: 16px;
     }
 }
