@@ -2,8 +2,10 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
+
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Trainers from './pages/Trainers/Trainers'
@@ -11,8 +13,10 @@ import Programs from './pages/Programs/Programs'
 import Membership from './pages/Membership/Membership'
 import Gallery from './pages/Gallery/Gallery'
 import Contact from './pages/Contact/Contact'
+
 import './App.css'
 
+// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation()
 
@@ -37,28 +41,20 @@ function App() {
       <ScrollToTop />
       <Navbar />
 
-      <MainRoutes />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/trainers" element={<Trainers />} />
+          <Route path="/programs" element={<Programs />} />
+          <Route path="/membership" element={<Membership />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
 
       <Footer />
     </Router>
-  )
-}
-
-function MainRoutes() {
-  const location = useLocation()
-
-  return (
-    <main>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/trainers" element={<Trainers />} />
-        <Route path="/programs" element={<Programs />} />
-        <Route path="/membership" element={<Membership />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </main>
   )
 }
 
