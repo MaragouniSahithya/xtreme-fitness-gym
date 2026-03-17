@@ -77,7 +77,7 @@
 }
 
 .program-detail__meta-value {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 13px;
     font-weight: 600;
     color: #fff;

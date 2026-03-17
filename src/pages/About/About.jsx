@@ -37,15 +37,15 @@ function About() {
                 <div className="page-hero__overlay" />
                 <div className="container page-hero__content">
                     <span className="section-tag">Our Story</span>
-                    <h1 className="page-hero__title">About <span>Xtreme Fitness Gym</span></h1>
-                    <p className="page-hero__subtitle">More than a gym — a movement built on discipline, dedication, and transformation.</p>
+                    <h1 className="page-hero__title" data-aos="fade-up">About <span>Xtreme Fitness Gym</span></h1>
+                    <p className="page-hero__subtitle" data-aos="fade-up" data-aos-delay="100">More than a gym — a movement built on discipline, dedication, and transformation.</p>
                 </div>
             </section>
 
             {/* MISSION */}
             <section className="about-mission">
                 <div className="container about-mission__grid">
-                    <div className="about-mission__content">
+                    <div className="about-mission__content" data-aos="fade-right">
                         <span className="section-tag">About Xtreme Fitness Gym</span>
                         <h2 className="section-title" style={{ textAlign: 'left', margin: '0 0 16px' }}>
                             More Than Just a <span>Gym</span>
@@ -72,8 +72,8 @@ function About() {
                             })}
                         </div>
                     </div>
-                    <div className="about-mission__img-wrap">
-                        <img src="/gallery4.jpg" alt="Gym Atmosphere" className="about-mission__img" loading="lazy" />
+                    <div className="about-mission__img-wrap" data-aos="fade-left">
+                        <img src="/gallery4.jpg" alt="Gym Atmosphere" className="about-mission__img img-fluid" loading="lazy" />
                     </div>
                 </div>
             </section>
@@ -81,7 +81,7 @@ function About() {
             {/* STATS */}
             <section className="about-stats">
                 <div className="container">
-                    <div className="about-stats__grid">
+                    <div className="about-stats__grid" data-aos="fade-up">
                         {stats.map((s) => {
                             const Icon = s.icon
                             return (
@@ -106,8 +106,8 @@ function About() {
                     </div>
                     <div className="timeline">
                         {milestones.map((m, i) => (
-                            <div key={m.year} className={`timeline__item ${i % 2 === 0 ? 'timeline__item--left' : 'timeline__item--right'}`}>
-                                <div className="timeline__card">
+                            <div key={m.year} className={`timeline__item ${i % 2 === 0 ? 'timeline__item--left' : 'timeline__item--right'}`} data-aos="fade-up" data-aos-delay={i * 100}>
+                                <div className="timeline__card glass-card">
                                     <span className="timeline__year">{m.year}</span>
                                     <h3 className="timeline__title">{m.title}</h3>
                                     <p className="timeline__desc">{m.desc}</p>
@@ -130,11 +130,11 @@ function About() {
                         <p className="section-subtitle">Everything you need to train, recover, and thrive under one roof.</p>
                     </div>
                     <div className="about-facilities__grid">
-                        <div className="about-facilities__img">
-                            <img src="/gallery8.jpg" alt="Gym Facilities" loading="lazy" />
+                        <div className="about-facilities__img" data-aos="fade-right">
+                            <img src="/gallery8.jpg" alt="Gym Facilities" className="img-fluid" loading="lazy" />
                         </div>
-                        <div className="about-facilities__list">
-                            {facilities.map((f) => (
+                        <div className="about-facilities__list" data-aos="fade-left">
+                            {facilities.map((f, i) => (
                                 <div key={f} className="about-facility-item">
                                     <FaCheckCircle className="about-facility-item__icon" />
                                     <span>{f}</span>

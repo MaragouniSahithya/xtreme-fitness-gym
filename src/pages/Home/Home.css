@@ -35,17 +35,21 @@
 .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg,
-            rgba(0, 0, 0, 0.9) 0%,
-            rgba(0, 0, 0, 0.7) 50%,
-            rgba(230, 57, 70, 0.15) 100%);
+    background: linear-gradient(120deg, rgba(0,0,0,0.8), rgba(220,38,38,0.4));
 }
 
 .hero__noise {
     position: absolute;
     inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    opacity: 0.4;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    animation: particlesMove 30s linear infinite;
+}
+
+@keyframes particlesMove {
+    from { background-position: 0 0; }
+    to { background-position: -300px -300px; }
 }
 
 .hero__content {
@@ -64,10 +68,10 @@
     padding: 8px 20px;
     border-radius: 40px;
     margin-bottom: 28px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-family: var(--font-heading);
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--primary-light);
     animation: fadeInUp 0.8s ease both;
@@ -120,10 +124,10 @@
     align-items: center;
     gap: 14px;
     color: rgba(255, 255, 255, 0.8);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
+    font-family: var(--font-heading);
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -175,15 +179,15 @@
 }
 
 .hero__stat-value {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
     font-weight: 900;
     color: var(--primary);
     letter-spacing: -1px;
 }
 
 .hero__stat-label {
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -197,9 +201,9 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    letter-spacing: 3px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.4);
     z-index: 2;
@@ -250,14 +254,14 @@
 
 .home-about__badge strong {
     display: block;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 2.5rem;
     font-weight: 900;
     line-height: 1;
 }
 
 .home-about__badge span {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     opacity: 0.9;
 }
@@ -386,10 +390,10 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-family: var(--font-heading);
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--primary);
     text-decoration: none;
@@ -461,10 +465,10 @@
     color: #fff;
     padding: 10px 28px;
     border-radius: 40px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-family: var(--font-heading);
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
     transition: background 0.3s ease;
@@ -547,10 +551,10 @@
     color: #fff;
     padding: 6px 24px;
     border-radius: 40px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-family: var(--font-heading);
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.05em;
     white-space: nowrap;
 }
 
@@ -572,7 +576,7 @@
 }
 
 .pricing-card__currency {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary);
@@ -580,7 +584,7 @@
 }
 
 .pricing-card__amount {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 4rem;
     font-weight: 900;
     color: #fff;
@@ -707,10 +711,10 @@
 }
 
 .gallery-item__overlay span {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-family: var(--font-heading);
+    font-size: 16px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #fff;
 }
@@ -781,8 +785,8 @@
 
 .testimonial-card__name {
     display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-family: var(--font-heading);
+    font-size: 16px;
     font-weight: 700;
     color: #fff;
     margin-bottom: 2px;

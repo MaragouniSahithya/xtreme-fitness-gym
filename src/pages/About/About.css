@@ -93,7 +93,7 @@
 }
 
 .about-value-card__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
@@ -140,7 +140,7 @@
 }
 
 .about-stat-card__value {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 3rem;
     font-weight: 900;
     color: #fff;
@@ -225,7 +225,7 @@
 }
 
 .timeline__year {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 3px;

@@ -48,7 +48,7 @@
 }
 
 .contact-info-card__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -83,7 +83,7 @@
     color: #2ecc71;
     padding: 16px 20px;
     border-radius: var(--radius);
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 24px;
@@ -108,7 +108,7 @@
 }
 
 .contact-form__group label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -165,7 +165,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
@@ -206,7 +206,7 @@
 .contact-hours-item__time {
     color: var(--primary);
     font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
 }
 
 /* SOCIAL CARD */
@@ -218,7 +218,7 @@
 }
 
 .contact-social-card__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;

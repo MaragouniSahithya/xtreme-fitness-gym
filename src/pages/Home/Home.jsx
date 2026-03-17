@@ -1,13 +1,50 @@
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { FaArrowRight, FaPlay, FaDumbbell, FaUsers, FaTrophy, FaClock, FaFire, FaRunning, FaHeartbeat, FaWeight, FaQuoteLeft, FaStar } from 'react-icons/fa'
 import './Home.css'
 
+/* ---- COMPONENTS ---- */
+function CountUp({ end, suffix = '', duration = 2000 }) {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        let startTime = null;
+        let animationFrame = null;
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                const step = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    setCount(Math.floor(progress * end));
+                    if (progress < 1) {
+                        animationFrame = window.requestAnimationFrame(step);
+                    } else {
+                        setCount(end);
+                    }
+                };
+                animationFrame = window.requestAnimationFrame(step);
+                observer.disconnect();
+            }
+        }, { threshold: 0.1 });
+
+        if (ref.current) observer.observe(ref.current);
+
+        return () => {
+            if (animationFrame) window.cancelAnimationFrame(animationFrame);
+            observer.disconnect();
+        };
+    }, [end, duration]);
+
+    return <span ref={ref}>{count}{suffix}</span>;
+}
+
 /* ---- DATA ---- */
 const stats = [
-    { value: '2000+', label: 'Active Members', icon: FaUsers },
-    { value: '15+', label: 'Expert Trainers', icon: FaDumbbell },
-    { value: '10+', label: 'Years of Experience', icon: FaTrophy },
-    { value: '24/7', label: 'Gym Access', icon: FaClock },
+    { value: 2000, suffix: '+', label: 'Active Members', icon: FaUsers },
+    { value: 15, suffix: '+', label: 'Expert Trainers', icon: FaDumbbell },
+    { value: 10, suffix: '+', label: 'Years of Experience', icon: FaTrophy },
+    { stringValue: '24/7', label: 'Gym Access', icon: FaClock },
 ]
 
 const programs = [
@@ -94,15 +131,15 @@ function Home() {
                         <span className="hero__tag-dot" />
                         <span>PREMIUM FITNESS CENTER</span>
                     </div>
-                    <h1 className="hero__title">
+                    <h1 className="hero__title" data-aos="fade-up">
                         Train Hard.<br />
                         Stay <span className="hero__title-accent">Strong.</span>
                     </h1>
-                    <p className="hero__subtitle">
+                    <p className="hero__subtitle" data-aos="fade-up" data-aos-delay="100">
                         Join Xtreme Fitness Gym and transform your body with expert coaching,
                         modern equipment, and a motivating community.
                     </p>
-                    <div className="hero__actions">
+                    <div className="hero__actions" data-aos="fade-up" data-aos-delay="200">
                         <Link to="/membership" className="btn-primary">
                             Join Now <FaArrowRight />
                         </Link>
@@ -111,10 +148,12 @@ function Home() {
                             Explore Programs
                         </Link>
                     </div>
-                    <div className="hero__stats">
+                    <div className="hero__stats" data-aos="fade-up" data-aos-delay="300">
                         {stats.map((s) => (
                             <div key={s.label} className="hero__stat">
-                                <span className="hero__stat-value">{s.value}</span>
+                                <span className="hero__stat-value">
+                                    {s.value !== undefined ? <CountUp end={s.value} suffix={s.suffix} /> : s.stringValue}
+                                </span>
                                 <span className="hero__stat-label">{s.label}</span>
                             </div>
                         ))}
@@ -128,7 +167,7 @@ function Home() {
             </section>
 
             {/* ===== ABOUT PREVIEW ===== */}
-            <section className="home-about">
+            <section className="home-about" data-aos="fade-right">
                 <div className="container home-about__grid">
                     <div className="home-about__img-wrap">
                         <img src="/gallery7.jpg" alt="Training at Xtreme Fitness Gym" className="home-about__img" loading="lazy" />
@@ -174,10 +213,10 @@ function Home() {
                         <p className="section-subtitle">From beginner to elite — we have a program that fits your goals, schedule, and fitness level.</p>
                     </div>
                     <div className="programs-grid">
-                        {programs.map((p) => {
+                        {programs.map((p, idx) => {
                             const Icon = p.icon
                             return (
-                                <div key={p.title} className="program-card">
+                                <div key={p.title} className="program-card glass-card" data-aos="fade-up" data-aos-delay={idx * 100}>
                                     <div className="program-card__icon-wrap">
                                         <Icon className="program-card__icon" />
                                     </div>
@@ -206,10 +245,10 @@ function Home() {
                         <p className="section-subtitle">Our world-class coaches bring decades of experience to help you achieve extraordinary results.</p>
                     </div>
                     <div className="trainers-grid">
-                        {trainers.map((t) => (
-                            <div key={t.name} className="trainer-card">
+                        {trainers.map((t, idx) => (
+                            <div key={t.name} className="trainer-card" data-aos="zoom-in" data-aos-delay={idx * 100}>
                                 <div className="trainer-card__img-wrap">
-                                    <img src={t.img} alt={t.name} className="trainer-card__img" />
+                                    <img src={t.img} alt={t.name} className="trainer-card__img img-fluid" loading="lazy" />
                                     <div className="trainer-card__overlay">
                                         <Link to="/trainers" className="trainer-card__btn">View Profile</Link>
                                     </div>
@@ -238,8 +277,8 @@ function Home() {
                         <p className="section-subtitle">No hidden fees. Cancel anytime. Choose the plan that fits your goals and budget.</p>
                     </div>
                     <div className="pricing-grid">
-                        {plans.map((plan) => (
-                            <div key={plan.name} className={`pricing-card ${plan.popular ? 'pricing-card--popular' : ''}`}>
+                        {plans.map((plan, idx) => (
+                            <div key={plan.name} className={`pricing-card ${plan.popular ? 'pricing-card--popular' : ''}`} data-aos="flip-left" data-aos-delay={idx * 100}>
                                 {plan.badge && <div className="pricing-card__badge">{plan.badge}</div>}
                                 <h3 className="pricing-card__name">{plan.name}</h3>
                                 <div className="pricing-card__price">
@@ -277,8 +316,8 @@ function Home() {
                     </div>
                     <div className="gallery-grid">
                         {galleryImages.map((img, i) => (
-                            <div key={i} className={`gallery-item gallery-item--${i + 1}`}>
-                                <img src={img.src} alt={img.alt} />
+                            <div key={i} className={`gallery-item gallery-item--${i + 1}`} data-aos="fade-up" data-aos-delay={i * 100}>
+                                <img src={img.src} alt={img.alt} className="img-fluid" loading="lazy" />
                                 <div className="gallery-item__overlay">
                                     <span>{img.alt}</span>
                                 </div>
@@ -300,15 +339,15 @@ function Home() {
                         <div className="divider" />
                     </div>
                     <div className="testimonials-grid">
-                        {testimonials.map((t) => (
-                            <div key={t.name} className="testimonial-card">
+                        {testimonials.map((t, idx) => (
+                            <div key={t.name} className="testimonial-card glass-card" data-aos="fade-up" data-aos-delay={idx * 100}>
                                 <FaQuoteLeft className="testimonial-card__quote" />
                                 <div className="testimonial-card__stars">
                                     {Array(t.rating).fill(0).map((_, i) => <FaStar key={i} />)}
                                 </div>
                                 <p className="testimonial-card__text">"{t.text}"</p>
                                 <div className="testimonial-card__author">
-                                    <img src={t.img} alt={t.name} className="testimonial-card__avatar" />
+                                    <img src={t.img} alt={t.name} className="testimonial-card__avatar img-fluid" loading="lazy" />
                                     <div>
                                         <strong className="testimonial-card__name">{t.name}</strong>
                                         <span className="testimonial-card__role">{t.role}</span>

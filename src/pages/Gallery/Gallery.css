@@ -20,7 +20,7 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     color: var(--text-muted);
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -84,7 +84,7 @@
 }
 
 .gallery-masonry__label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -93,7 +93,7 @@
 }
 
 .gallery-masonry__sublabel {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -136,7 +136,7 @@
 .lightbox__caption {
     text-align: center;
     margin-top: 16px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading);
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 2px;

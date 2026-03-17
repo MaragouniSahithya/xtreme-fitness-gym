@@ -27,8 +27,8 @@ function Gallery() {
                 <div className="page-hero__overlay" />
                 <div className="container page-hero__content">
                     <span className="section-tag">Our Space</span>
-                    <h1 className="page-hero__title">Gym <span>Gallery</span></h1>
-                    <p className="page-hero__subtitle">A peek inside our gym — state-of-the-art equipment, elite coaching spaces, and an electrifying atmosphere.</p>
+                    <h1 className="page-hero__title" data-aos="fade-up">Gym <span>Gallery</span></h1>
+                    <p className="page-hero__subtitle" data-aos="fade-up" data-aos-delay="100">A peek inside our gym — state-of-the-art equipment, elite coaching spaces, and an electrifying atmosphere.</p>
                 </div>
             </section>
 
@@ -51,9 +51,11 @@ function Gallery() {
                             <div
                                 key={`${img.src}-${i}`}
                                 className="gallery-masonry__item"
+                                data-aos="fade-up"
+                                data-aos-delay={(i % 5) * 100}
                                 onClick={() => setLightbox(img)}
                             >
-                                <img src={img.src} alt={img.alt} loading="lazy" />
+                                <img src={img.src} alt={img.alt} className="img-fluid" loading="lazy" />
                                 <div className="gallery-masonry__overlay">
                                     <div className="gallery-masonry__overlay-inner">
                                         <span className="gallery-masonry__label">{img.alt}</span>

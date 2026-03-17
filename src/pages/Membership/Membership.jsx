@@ -80,8 +80,8 @@ function Membership() {
                 <div className="page-hero__overlay" />
                 <div className="container page-hero__content">
                     <span className="section-tag">Pricing Plans</span>
-                    <h1 className="page-hero__title">Choose Your <span>Plan</span></h1>
-                    <p className="page-hero__subtitle">Simple, transparent pricing with no hidden fees. Cancel or upgrade anytime.</p>
+                    <h1 className="page-hero__title" data-aos="fade-up">Choose Your <span>Plan</span></h1>
+                    <p className="page-hero__subtitle" data-aos="fade-up" data-aos-delay="100">Simple, transparent pricing with no hidden fees. Cancel or upgrade anytime.</p>
                 </div>
             </section>
 
@@ -94,8 +94,8 @@ function Membership() {
                         <p className="section-subtitle">All plans include our core facilities. Upgrade for more coaching and premium perks.</p>
                     </div>
                     <div className="membership-grid">
-                        {plans.map((plan) => (
-                            <div key={plan.name} className={`membership-card ${plan.popular ? 'membership-card--popular' : ''}`}>
+                        {plans.map((plan, idx) => (
+                            <div key={plan.name} className={`membership-card ${plan.popular ? 'membership-card--popular' : ''} glass-card`} data-aos="flip-left" data-aos-delay={idx * 100}>
                                 {plan.badge && <div className="membership-card__badge">{plan.badge}</div>}
                                 <div className="membership-card__header">
                                     <h3 className="membership-card__name">{plan.name}</h3>
@@ -139,8 +139,8 @@ function Membership() {
                         <div className="divider" />
                     </div>
                     <div className="faq-grid">
-                        {faqs.map((faq) => (
-                            <div key={faq.q} className="faq-card">
+                        {faqs.map((faq, idx) => (
+                            <div key={faq.q} className="faq-card glass-card" data-aos="fade-up" data-aos-delay={idx * 100}>
                                 <h4 className="faq-card__q">{faq.q}</h4>
                                 <p className="faq-card__a">{faq.a}</p>
                             </div>

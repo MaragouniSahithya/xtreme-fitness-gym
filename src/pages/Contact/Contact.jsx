@@ -33,18 +33,18 @@ function Contact() {
                 <div className="page-hero__overlay" />
                 <div className="container page-hero__content">
                     <span className="section-tag">Get In Touch</span>
-                    <h1 className="page-hero__title">Contact <span>Us</span></h1>
-                    <p className="page-hero__subtitle">Ready to start your fitness journey? Our team is here to help you take the first step.</p>
+                    <h1 className="page-hero__title" data-aos="fade-up">Contact <span>Us</span></h1>
+                    <p className="page-hero__subtitle" data-aos="fade-up" data-aos-delay="100">Ready to start your fitness journey? Our team is here to help you take the first step.</p>
                 </div>
             </section>
 
             <section className="contact-info-section">
                 <div className="container">
                     <div className="contact-info-cards">
-                        {contactInfo.map((info) => {
+                        {contactInfo.map((info, idx) => {
                             const Icon = info.icon
                             return (
-                                <div key={info.title} className="contact-info-card">
+                                <div key={info.title} className="contact-info-card glass-card" data-aos="fade-up" data-aos-delay={idx * 100}>
                                     <div className="contact-info-card__icon-wrap">
                                         <Icon />
                                     </div>
@@ -63,7 +63,7 @@ function Contact() {
                 <div className="container">
                     <div className="contact-grid">
                         {/* FORM */}
-                        <div className="contact-form-wrap">
+                        <div className="contact-form-wrap glass-card" data-aos="fade-right">
                             <div className="section-header" style={{ textAlign: 'left', marginBottom: 36 }}>
                                 <span className="section-tag">Send a Message</span>
                                 <h2 className="section-title" style={{ textAlign: 'left', margin: '12px 0' }}>
@@ -154,9 +154,9 @@ function Contact() {
                         </div>
 
                         {/* SIDEBAR */}
-                        <div className="contact-sidebar">
+                        <div className="contact-sidebar" data-aos="fade-left">
                             {/* Hours */}
-                            <div className="contact-hours-card">
+                            <div className="contact-hours-card glass-card">
                                 <h3 className="contact-hours-card__title">
                                     <FaClock className="contact-hours-card__icon" />
                                     Opening Hours
@@ -172,7 +172,7 @@ function Contact() {
                             </div>
 
                             {/* Social */}
-                            <div className="contact-social-card">
+                            <div className="contact-social-card glass-card">
                                 <h3 className="contact-social-card__title">Follow Us</h3>
                                 <p className="contact-social-card__desc">Stay connected for daily workout tips, motivation, and community updates.</p>
                                 <div className="contact-social-links">

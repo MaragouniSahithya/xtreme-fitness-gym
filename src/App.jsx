@@ -20,6 +20,12 @@ function ScrollToTop() {
 }
 
 function App() {
+  useEffect(() => {
+    if (window.AOS) {
+      window.AOS.init({ duration: 800, once: true });
+    }
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />

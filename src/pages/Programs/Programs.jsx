@@ -62,8 +62,8 @@ function Programs() {
                 <div className="page-hero__overlay" />
                 <div className="container page-hero__content">
                     <span className="section-tag">What We Offer</span>
-                    <h1 className="page-hero__title">Our <span>Programs</span></h1>
-                    <p className="page-hero__subtitle">Scientifically designed fitness programs for every goal, level, and lifestyle.</p>
+                    <h1 className="page-hero__title" data-aos="fade-up">Our <span>Programs</span></h1>
+                    <p className="page-hero__subtitle" data-aos="fade-up" data-aos-delay="100">Scientifically designed fitness programs for every goal, level, and lifestyle.</p>
                 </div>
             </section>
 
@@ -72,9 +72,9 @@ function Programs() {
                     {programs.map((p, i) => {
                         const Icon = p.icon
                         return (
-                            <div key={p.title} className={`program-detail ${i % 2 !== 0 ? 'program-detail--reverse' : ''}`}>
+                            <div key={p.title} className={`program-detail ${i % 2 !== 0 ? 'program-detail--reverse' : ''} glass-card`} data-aos="fade-up" data-aos-delay={i * 100}>
                                 <div className="program-detail__img-wrap">
-                                    <img src={p.image} alt={p.title} className="program-detail__img" loading="lazy" />
+                                    <img src={p.image} alt={p.title} className="program-detail__img img-fluid" loading="lazy" />
                                     <div className="program-detail__img-overlay">
                                         <div className="program-detail__meta">
                                             <div className="program-detail__meta-item">

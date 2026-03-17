@@ -51,8 +51,8 @@ function Trainers() {
                 <div className="page-hero__overlay" />
                 <div className="container page-hero__content">
                     <span className="section-tag">Expert Coaches</span>
-                    <h1 className="page-hero__title">Meet Our <span>Trainers</span></h1>
-                    <p className="page-hero__subtitle">World-class certified coaches dedicated to transforming your fitness journey.</p>
+                    <h1 className="page-hero__title" data-aos="fade-up">Meet Our <span>Trainers</span></h1>
+                    <p className="page-hero__subtitle" data-aos="fade-up" data-aos-delay="100">World-class certified coaches dedicated to transforming your fitness journey.</p>
                 </div>
             </section>
 
@@ -65,10 +65,10 @@ function Trainers() {
                         <p className="section-subtitle">Each of our trainers is carefully selected for their expertise, passion, and commitment to delivering real results.</p>
                     </div>
                     <div className="trainers-full-grid">
-                        {trainers.map((t) => (
-                            <div key={t.name} className="trainer-full-card">
+                        {trainers.map((t, i) => (
+                            <div key={t.name} className="trainer-full-card glass-card" data-aos="fade-up" data-aos-delay={i * 100}>
                                 <div className="trainer-full-card__img-wrap">
-                                    <img src={t.img} alt={t.name} className="trainer-full-card__img" />
+                                    <img src={t.img} alt={t.name} className="trainer-full-card__img img-fluid" loading="lazy" />
                                 </div>
                                 <div className="trainer-full-card__body">
                                     <div className="trainer-full-card__header">
